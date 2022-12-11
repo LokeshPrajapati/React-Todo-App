@@ -1,0 +1,77 @@
+* {
+  margin: 0px;
+  padding: 0;
+  box-sizing: border-box;
+}
+.todo-app-container {
+  width: 100%;
+  height: 100vh;
+  background-color: #ededed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-container {
+  max-width: 500px;
+  margin: auto;
+  width: 100%;
+}
+.todo-form,
+.form-control {
+  width: 100%;
+}
+.form-input {
+  border: 0px;
+  background-color: white;
+  padding: 15px;
+  max-width: calc(100% - 110px);
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.todo-button {
+  max-width: 110px;
+  width: 100%;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 15px;
+  color: #fff;
+  background-color: purple;
+  border: 0px;
+  cursor: pointer;
+}
+:focus {
+  outline: 0px;
+}
+.empty {
+  margin: 10px 0;
+  background: #d72717;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+}
+.todo-list {
+  margin-top: 30px;
+}
+.todo {
+  padding: 15px;
+  background: mediumpurple;
+  border-radius: 5px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.button-container {
+  max-width: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.delete-button,
+.edit-button {
+  cursor: pointer;
+}
