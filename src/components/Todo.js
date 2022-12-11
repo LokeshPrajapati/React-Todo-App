@@ -5,16 +5,32 @@ const Todo = () => {
   const [todo, setTodo] = useState();
   const [todoList, setTodoList] = useState([]);
   const [isToggleTodo, setIsToggleTodo] = useState(true);
-  const [editTodo, setEditTodo] = useState("");
+  const [editTodo, setEditTodo] = useState(null);
 
   const addTodo = () => {
-    if (todo !== "") {
+    if (!todo) {
+    } else if (todo && !isToggleTodo) {
+      setTodoList(
+        todoList.map((elem) => {
+          if (elem.id === editTodo) {
+            return {
+              ...elem,
+              name: todo,
+            };
+          }
+          return elem;
+        })
+      );
+      setIsToggleTodo(true);
+      setTodo("");
+      setEditTodo(null);
+    } else {
       const allTodoData = { id: new Date().getTime().toString(), name: todo };
       setTodoList([...todoList, allTodoData]);
       setTodo("");
     }
-    setIsToggleTodo(true);
   };
+
   const deleteTodo = (index) => {
     const newTodoList = todoList.filter((todo) => {
       return index !== todo.id;
@@ -28,6 +44,7 @@ const Todo = () => {
     });
     setIsToggleTodo(false);
     setTodo(newUpdatedTodoValue.name);
+    setEditTodo(id);
   };
 
   return (
@@ -55,7 +72,12 @@ const Todo = () => {
                 <span>{todo.name}</span>
               </div>
               <div className="button-container">
-                <span className="edit-button" onClick={updateTodo(todo.id)}>
+                <span
+                  className="edit-button"
+                  onClick={() => {
+                    updateTodo(todo.id);
+                  }}
+                >
                   <img src={editImage} width="20" alt="Edit Icon" />
                 </span>
                 <span
